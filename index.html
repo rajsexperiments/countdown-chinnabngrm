@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to See Chinna Bngrm</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300..600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root,
+        [data-theme="light"] {
+            --color-bg: #f7f6f2;
+            --color-surface: #f9f8f5;
+            --color-surface-2: #fbfbf9;
+            --color-surface-offset: #f3f0ec;
+            --color-border: #d4d1ca;
+            --color-text: #28251d;
+            --color-text-muted: #7a7974;
+            --color-text-faint: #bab9b4;
+            --color-primary: #3b82f6;
+            --color-primary-hover: #2563eb;
+            --color-gold: #fbbf24;
+            --color-error: #ef4444;
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.1);
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-full: 9999px;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --font-display: 'Instrument Serif', Georgia, serif;
+            --font-body: 'DM Sans', 'Helvetica Neue', sans-serif;
+            --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+            --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+            --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+            --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+            --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+            --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+            --text-hero: clamp(3rem, 0.5rem + 7vw, 8rem);
+            --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        [data-theme="dark"] {
+            --color-bg: #0e0d0b;
+            --color-surface: #151412;
+            --color-surface-2: #1c1b19;
+            --color-surface-offset: #1d1c1a;
+            --color-border: #393836;
+            --color-text: #cdccca;
+            --color-text-muted: #797876;
+            --color-text-faint: #5a5957;
+            --color-primary: #60a5fa;
+            --color-primary-hover: #3b82f6;
+            --color-gold: #facc15;
+            --color-error: #f87171;
+            --glass-bg: rgba(0, 0, 0, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 12px 48px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Background Presets */
+        [data-bg="default"] {
+            --bg-current: var(--color-bg);
+        }
+
+        [data-bg="ocean"] {
+            --bg-current: linear-gradient(135deg, #012a2d 0%, #004d52 100%);
+        }
+
+        [data-bg="sunset"] {
+            --bg-current: linear-gradient(135deg, #2d1b4e 0%, #7b2c5d 100%);
+        }
+
+        [data-bg="midnight"] {
+            --bg-current: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+        }
+
+        [data-bg="nature"] {
+            --bg-current: linear-gradient(135deg, #0b2413 0%, #1e4d2b 100%);
+        }
+
+        [data-theme="light"][data-bg="ocean"] {
+            --bg-current: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%);
+        }
+
+        [data-theme="light"][data-bg="sunset"] {
+            --bg-current: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+        }
+
+        [data-theme="light"][data-bg="midnight"] {
+            --bg-current: linear-gradient(135deg, #eceff1 0%, #cfd8dc 100%);
+        }
+
+        [data-theme="light"][data-bg="nature"] {
+            --bg-current: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+        }
+
+        [data-bg="custom"] {
+            --bg-current: var(--custom-bg-url);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100dvh;
+            font-family: var(--font-body);
+            font-size: var(--text-base);
+            color: var(--color-text);
+            background: var(--bg-current, var(--color-bg));
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-8) var(--space-4);
+            transition: background var(--transition-interactive), color var(--transition-interactive);
+        }
+
+        .theme-toggle {
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-full);
+            padding: var(--space-2) var(--space-3);
+            color: var(--color-text-muted);
+            cursor: pointer;
+            transition: all var(--transition-interactive);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            font-size: var(--text-sm);
+        }
+
+        .theme-toggle:hover {
+            color: var(--color-text);
+            background: var(--color-surface-2);
+        }
+
+        .controls-group {
+            position: fixed;
+            top: var(--space-4);
+            right: var(--space-4);
+            display: flex;
+            gap: var(--space-2);
+            z-index: 100;
+        }
+
+        .bg-selector {
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-full);
+            padding: var(--space-2) var(--space-3);
+            color: var(--color-text-muted);
+            cursor: pointer;
+            font-family: inherit;
+            font-size: var(--text-sm);
+            transition: all var(--transition-interactive);
+            outline: none;
+        }
+
+        .bg-selector:hover {
+            background: var(--color-surface-2);
+            color: var(--color-text);
+        }
+
+        @media (max-width: 600px) {
+            .controls-group {
+                bottom: var(--space-4);
+                top: auto;
+                right: 50%;
+                transform: translateX(50%);
+                background: var(--color-surface);
+                padding: var(--space-2);
+                border-radius: var(--radius-full);
+                box-shadow: var(--shadow-lg);
+            }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 680px;
+            text-align: center;
+        }
+
+        .label {
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--color-primary);
+            font-weight: 500;
+            margin-bottom: var(--space-3);
+        }
+
+        .title {
+            font-family: var(--font-display);
+            font-size: var(--text-2xl);
+            line-height: 1.1;
+            color: var(--color-text);
+            margin-bottom: var(--space-2);
+        }
+
+        .subtitle {
+            font-size: var(--text-sm);
+            color: var(--color-text-muted);
+            margin-bottom: var(--space-8);
+            line-height: 3;
+        }
+
+        .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-3);
+            margin-bottom: var(--space-8);
+        }
+
+        .unit-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6) var(--space-4);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeInScale 0.6s ease outwards backwards;
+        }
+
+        .unit-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .unit-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .unit-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .unit-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .unit-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-lg), 0 0 20px rgba(var(--color-primary), 0.2);
+            border-color: var(--color-primary);
+        }
+
+        .unit-number {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 1rem + 4vw, 4rem);
+            line-height: 1;
+            color: var(--color-text);
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-variant-numeric: tabular-nums;
+            min-width: 2ch;
+            text-align: center;
+            transition: transform 0.15s ease;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .unit-number.flip {
+            animation: flipNum 0.3s ease-out;
+        }
+
+        @keyframes flipNum {
+            0% {
+                transform: scale(1.1);
+                color: var(--color-gold);
+            }
+
+            100% {
+                transform: scale(1);
+                color: var(--color-text);
+            }
+        }
+
+        .unit-label {
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-text-muted);
+            font-weight: 500;
+        }
+
+        .tz-info {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-6);
+            flex-wrap: wrap;
+            margin-bottom: var(--space-6);
+        }
+
+        .tz-pill {
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-full);
+            padding: var(--space-2) var(--space-4);
+            font-size: var(--text-sm);
+            color: var(--color-text-muted);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            transition: transform 0.3s ease;
+        }
+
+        .tz-pill:hover {
+            transform: translateY(-2px);
+            background: var(--color-surface-2);
+        }
+
+        .tz-pill span.dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        .tz-pill .tz-time {
+            color: var(--color-text);
+            font-weight: 500;
+        }
+
+        .target-line {
+            font-size: var(--text-xs);
+            color: var(--color-text-faint);
+            margin-top: var(--space-4);
+        }
+
+        .target-line strong {
+            color: var(--color-gold);
+        }
+
+        .progress-bar-wrap {
+            width: 100%;
+            background: var(--color-surface-offset);
+            border-radius: var(--radius-full);
+            height: 4px;
+            margin-bottom: var(--space-8);
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 4px;
+            border-radius: var(--radius-full);
+            background: linear-gradient(90deg, var(--color-primary), var(--color-gold), var(--color-primary));
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite linear;
+            transition: width 1s linear;
+        }
+
+        @keyframes shimmer {
+            from {
+                background-position: 200% 0;
+            }
+
+            to {
+                background-position: 0 0;
+            }
+        }
+
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            z-index: 1;
+            animation: sparkleAnim 4s linear infinite;
+        }
+
+        @keyframes sparkleAnim {
+            0% {
+                transform: translateY(0) scale(0);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-100px) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .expired-msg {
+            display: none;
+            font-family: var(--font-display);
+            font-size: var(--text-xl);
+            color: var(--color-primary);
+            margin-top: var(--space-8);
+        }
+
+        /* Boy's Thought Cloud Bubble */
+        .thought-cloud-container {
+            position: absolute;
+            top: 15%;
+            right: 22%;
+            z-index: 10;
+            pointer-events: auto;
+            animation: floatCloud 3.2s ease-in-out infinite;
+        }
+
+        .thought-cloud {
+            position: relative;
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1.5px solid rgba(255, 255, 255, 0.5);
+            padding: 16px 36px;
+            border-radius: 48px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08), inset 0 0 20px rgba(255, 255, 255, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform var(--transition-interactive), box-shadow var(--transition-interactive);
+            cursor: pointer;
+        }
+
+        [data-theme="dark"] .thought-cloud {
+            background: rgba(20, 20, 20, 0.65);
+            border: 1.5px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .thought-cloud:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+        }
+
+        .thought-cloud-text {
+            font-family: var(--font-display);
+            font-size: clamp(1.4rem, 1.15rem + 1vw, 2.2rem);
+            font-weight: 600;
+            font-style: italic;
+            color: var(--color-text);
+            white-space: nowrap;
+            letter-spacing: 0.02em;
+            background: linear-gradient(135deg, #1d1c1a, #4a4947);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding: 15px 0;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+        }
+
+        [data-theme="dark"] .thought-cloud-text {
+            background: linear-gradient(135deg, #ffffff, #dcdcd9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Fluffy cloud shapes via pseudo-elements - Larger & perfectly spaced */
+        .thought-cloud::before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            left: 18%;
+            width: 44px;
+            height: 44px;
+            background: inherit;
+            backdrop-filter: inherit;
+            -webkit-backdrop-filter: inherit;
+            border: inherit;
+            border-bottom: none;
+            border-right: none;
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .thought-cloud::after {
+            content: "";
+            position: absolute;
+            top: -28px;
+            right: 22%;
+            width: 58px;
+            height: 58px;
+            background: inherit;
+            backdrop-filter: inherit;
+            -webkit-backdrop-filter: inherit;
+            border: inherit;
+            border-bottom: none;
+            border-left: none;
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        /* Descending thought dots pointing to boy's head (bottom right direction) - Larger */
+        .thought-dot-1 {
+            position: absolute;
+            bottom: -20px;
+            right: 42px;
+            width: 24px;
+            height: 24px;
+            background: inherit;
+            backdrop-filter: inherit;
+            -webkit-backdrop-filter: inherit;
+            border: inherit;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .thought-dot-2 {
+            position: absolute;
+            bottom: -35px;
+            right: 28px;
+            width: 13px;
+            height: 13px;
+            background: inherit;
+            backdrop-filter: inherit;
+            -webkit-backdrop-filter: inherit;
+            border: inherit;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        @keyframes floatCloud {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-24px) rotate(1.5deg);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .thought-cloud-container {
+                right: 15%;
+                top: 18%;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .thought-cloud-container {
+                right: 8%;
+                top: 20%;
+                scale: 0.9;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .thought-cloud-container {
+                right: 5%;
+                top: 22%;
+                scale: 0.75;
+            }
+        }
+
+        /* Girl's Thought Cloud Bubble */
+        .girl-cloud-container {
+            position: absolute;
+            top: 22%;
+            left: 12%;
+            z-index: 10;
+            pointer-events: auto;
+            animation: floatCloudGirl 3.5s ease-in-out infinite;
+        }
+
+        /* Descending thought dots pointing to girl's head (bottom left direction) - Larger */
+        .girl-dot-1 {
+            position: absolute;
+            bottom: -20px;
+            left: 42px;
+            width: 24px;
+            height: 24px;
+            background: inherit;
+            backdrop-filter: inherit;
+            -webkit-backdrop-filter: inherit;
+            border: inherit;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .girl-dot-2 {
+            position: absolute;
+            bottom: -35px;
+            left: 28px;
+            width: 13px;
+            height: 13px;
+            background: inherit;
+            backdrop-filter: inherit;
+            -webkit-backdrop-filter: inherit;
+            border: inherit;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        @keyframes floatCloudGirl {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-22px) rotate(-1.5deg);
+            }
+        }
+
+        /* Responsive adjustments for Girl */
+        @media (max-width: 1200px) {
+            .girl-cloud-container {
+                left: 6%;
+                top: 25%;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .girl-cloud-container {
+                left: 2%;
+                top: 26%;
+                scale: 0.9;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .girl-cloud-container {
+                left: 1%;
+                top: 28%;
+                scale: 0.75;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .countdown-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tz-info {
+                gap: var(--space-3);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="controls-group">
+        <select class="bg-selector" id="bg-select" aria-label="Select background">
+            <option value="default">Default</option>
+            <option value="ocean">Ocean</option>
+            <option value="sunset">Sunset</option>
+            <option value="midnight">Midnight</option>
+            <option value="nature">Nature</option>
+            <option value="custom" id="opt-custom" style="display:none">Custom Image</option>
+            <option value="upload">Upload Image...</option>
+        </select>
+        <input type="file" id="bg-upload" accept="image/*" style="display:none">
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch theme">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+            <span>Toggle</span>
+        </button>
+    </div>
+
+    <!-- Thought Cloud Message from Boy's Head -->
+    <div class="thought-cloud-container">
+        <div class="thought-cloud">
+            <span class="thought-cloud-text"> See Youuu Soooon Nannaluuuu </span>
+            <div class="thought-dot-1"></div>
+            <div class="thought-dot-2"></div>
+        </div>
+    </div>
+
+    <!-- Thought Cloud Message from Girl's Head -->
+    <div class="girl-cloud-container">
+        <div class="thought-cloud">
+            <span class="thought-cloud-text"> Saranghaeyoo Nanna.... Ochey Twaraga </span>
+            <div class="girl-dot-1"></div>
+            <div class="girl-dot-2"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <p class="label">Counting Down</p>
+
+
+
+        <div class="countdown-grid">
+            <div class="unit-card">
+                <div class="unit-number" id="days">--</div>
+                <div class="unit-label">Days</div>
+            </div>
+            <div class="unit-card">
+                <div class="unit-number" id="hours">--</div>
+                <div class="unit-label">Hours</div>
+            </div>
+            <div class="unit-card">
+                <div class="unit-number" id="minutes">--</div>
+                <div class="unit-label">Minutes</div>
+            </div>
+            <div class="unit-card">
+                <div class="unit-number" id="seconds">--</div>
+                <div class="unit-label">Seconds</div>
+            </div>
+        </div>
+
+        <div class="progress-bar-wrap">
+            <div class="progress-bar" id="progress" style="width:0%"></div>
+        </div>
+
+        <div class="tz-info">
+            <div class="tz-pill">
+                <span class="dot"></span>
+                <span>Paris (CEST)</span>
+                <span class="tz-time" id="paris-now">--:--:--</span>
+            </div>
+            <div class="tz-pill">
+                <span class="dot" style="background:var(--color-gold)"></span>
+                <span>IST (India)</span>
+                <span class="tz-time" id="ist-now">--:--:--</span>
+            </div>
+        </div>
+
+        <p class="target-line">
+        </p>
+
+        <div class="expired-msg" id="expired">
+            🎉 The moment has arrived!
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            const t = document.querySelector('[data-theme-toggle]');
+            const b = document.getElementById('bg-select');
+            const r = document.documentElement;
+
+            // Theme setup
+            let d = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            r.setAttribute('data-theme', d);
+
+            if (t) t.addEventListener('click', () => {
+                d = d === 'dark' ? 'light' : 'dark';
+                r.setAttribute('data-theme', d);
+                localStorage.setItem('theme', d);
+            });
+
+            // Background setup
+            let bg = localStorage.getItem('bg-preset') || 'default';
+            const customImg = localStorage.getItem('custom-bg-data');
+
+            if (customImg) {
+                r.style.setProperty('--custom-bg-url', `url(${customImg})`);
+                document.getElementById('opt-custom').style.display = 'block';
+            }
+
+            r.setAttribute('data-bg', bg);
+            if (b) {
+                b.value = bg;
+                b.addEventListener('change', (e) => {
+                    const val = e.target.value;
+                    if (val === 'upload') {
+                        document.getElementById('bg-upload').click();
+                        // Reset to previous value in case they cancel
+                        b.value = bg;
+                    } else {
+                        bg = val;
+                        r.setAttribute('data-bg', bg);
+                        localStorage.setItem('bg-preset', bg);
+                    }
+                });
+            }
+
+            const uploadInput = document.getElementById('bg-upload');
+            if (uploadInput) {
+                uploadInput.addEventListener('change', (e) => {
+                    const file = e.target.files[0];
+                    if (file) {
+                        if (file.size > 10 * 1024 * 1024) {
+                            alert('Image is too large. Please select an image under 10MB.');
+                            return;
+                        }
+                        const reader = new FileReader();
+                        reader.onload = (event) => {
+                            const dataUrl = event.target.result;
+                            try {
+                                localStorage.setItem('custom-bg-data', dataUrl);
+                                r.style.setProperty('--custom-bg-url', `url(${dataUrl})`);
+                                document.getElementById('opt-custom').style.display = 'block';
+                                bg = 'custom';
+                                b.value = 'custom';
+                                r.setAttribute('data-bg', 'custom');
+                                localStorage.setItem('bg-preset', 'custom');
+                            } catch (e) {
+                                alert('Could not save image (storage limit reached). Try a smaller file.');
+                            }
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            }
+        })();
+
+        // Target: June 27, 2026, 04:00 IST
+        // IST = UTC+5:30 → 04:00 IST = 22:30 UTC on June 26 = 00:30 CEST on June 27
+        const TARGET_UTC = new Date('2026-06-26T22:30:00Z');
+
+        // Reference: start = page load time (for progress bar, we use 60 days before as origin)
+        const ORIGIN_UTC = new Date('2026-04-28T22:30:00Z'); // 60 days before target
+        const TOTAL_MS = TARGET_UTC - ORIGIN_UTC;
+
+        const padZ = n => String(Math.floor(n)).padStart(2, '0');
+
+        const prev = { days: null, hours: null, minutes: null, seconds: null };
+
+        function animateIfChanged(id, val) {
+            const el = document.getElementById(id);
+            const str = padZ(val);
+            if (prev[id] !== str) {
+                el.classList.remove('flip');
+                void el.offsetWidth;
+                el.classList.add('flip');
+                el.textContent = str;
+                prev[id] = str;
+            }
+        }
+
+        function tick() {
+            const now = new Date();
+            const diff = TARGET_UTC - now;
+
+            // Live clocks
+            document.getElementById('paris-now').textContent = now.toLocaleTimeString('fr-FR', {
+                timeZone: 'Europe/Paris', hour: '2-digit', minute: '2-digit', second: '2-digit'
+            });
+            document.getElementById('ist-now').textContent = now.toLocaleTimeString('en-IN', {
+                timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+            });
+
+            if (diff <= 0) {
+                ['days', 'hours', 'minutes', 'seconds'].forEach(id => {
+                    document.getElementById(id).textContent = '00';
+                });
+                document.getElementById('expired').style.display = 'block';
+                document.getElementById('progress').style.width = '100%';
+                return;
+            }
+
+            const totalSec = Math.floor(diff / 1000);
+            const days = Math.floor(totalSec / 86400);
+            const hours = Math.floor((totalSec % 86400) / 3600);
+            const minutes = Math.floor((totalSec % 3600) / 60);
+            const seconds = totalSec % 60;
+
+            animateIfChanged('days', days);
+            animateIfChanged('hours', hours);
+            animateIfChanged('minutes', minutes);
+            animateIfChanged('seconds', seconds);
+
+            // Progress bar (elapsed from origin to target)
+            const elapsed = now - ORIGIN_UTC;
+            const pct = Math.min(100, Math.max(0, (elapsed / TOTAL_MS) * 100));
+            document.getElementById('progress').style.width = pct + '%';
+
+            setTimeout(tick, 1000);
+        }
+
+        function createSparkle() {
+            const s = document.createElement('div');
+            s.className = 'sparkle';
+            const size = Math.random() * 4 + 2;
+            s.style.width = size + 'px';
+            s.style.height = size + 'px';
+            s.style.left = Math.random() * 100 + 'vw';
+            s.style.top = Math.random() * 100 + 'vh';
+            s.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            s.style.background = Math.random() > 0.5 ? 'var(--color-gold)' : 'white';
+            document.body.appendChild(s);
+            setTimeout(() => s.remove(), 4000);
+        }
+        setInterval(createSparkle, 200);
+
+        tick();
+    </script>
+</body>
+
+</html>
