@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Countdown to See Chinna Bngrm</title>
+    <title>Countdown to See My Chinna Bngrm</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -72,7 +72,7 @@
 
         /* Background Presets */
         [data-bg="default"] {
-            --bg-current: var(--color-bg);
+            --bg-current: url('./assets/amazing.jpg');
         }
 
         [data-bg="ocean"] {
@@ -850,7 +850,7 @@
 
         // Target: June 27, 2026, 04:00 IST
         // IST = UTC+5:30 → 04:00 IST = 22:30 UTC on June 26 = 00:30 CEST on June 27
-        const TARGET_UTC = new Date('2026-06-26T22:30:00Z');
+        const TARGET_UTC = new Date('2026-06-26T23:30:00Z');
 
         // Reference: start = page load time (for progress bar, we use 60 days before as origin)
         const ORIGIN_UTC = new Date('2026-04-28T22:30:00Z'); // 60 days before target
