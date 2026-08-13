@@ -850,10 +850,10 @@
 
         // Target: June 27, 2026, 04:00 IST
         // IST = UTC+5:30 → 04:00 IST = 22:30 UTC on June 26 = 00:30 CEST on June 27
-        const TARGET_UTC = new Date('2026-06-26T23:30:00Z');
+        const TARGET_UTC = new Date('2026-08-14T23:30:00Z');
 
         // Reference: start = page load time (for progress bar, we use 60 days before as origin)
-        const ORIGIN_UTC = new Date('2026-04-28T22:30:00Z'); // 60 days before target
+        const ORIGIN_UTC = new Date('2027-11-01T22:30:00Z'); // 60 days before target
         const TOTAL_MS = TARGET_UTC - ORIGIN_UTC;
 
         const padZ = n => String(Math.floor(n)).padStart(2, '0');
